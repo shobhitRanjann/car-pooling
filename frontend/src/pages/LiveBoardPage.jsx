@@ -181,16 +181,16 @@ function RideCard({ ride: initialRide, onRefresh }) {
     <div className={`ride-card flex flex-col gap-4 transition-opacity duration-500 ${!isActive && isOwn ? 'opacity-60' : ''}`}>
 
       {/* ── Top row: driver info + owner controls ── */}
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         {/* Driver avatar + name */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 w-full sm:w-auto">
           <div className="w-10 h-10 rounded-full bg-brand-600/20 flex items-center justify-center text-brand-400 font-bold text-sm select-none shrink-0">
             {ride.driver?.firstName?.[0]}{ride.driver?.lastName?.[0]}
           </div>
-          <div>
-            <p className="text-sm font-semibold text-slate-900">
-              {ride.driver?.firstName} {ride.driver?.lastName}
-              {isOwn && <span className="ml-2 text-xs text-brand-400 font-normal">(you)</span>}
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-slate-900 flex flex-wrap items-center gap-1">
+              <span>{ride.driver?.firstName} {ride.driver?.lastName}</span>
+              {isOwn && <span className="text-xs text-brand-400 font-normal">(you)</span>}
             </p>
             <a href={`tel:${ride.driver?.mobileNumber}`}
               className="text-xs text-slate-500 hover:text-brand-400 transition-colors">
@@ -201,7 +201,7 @@ function RideCard({ ride: initialRide, onRefresh }) {
 
         {/* ── Toggle + Edit — only for driver's own card ── */}
         {isOwn && (
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2 shrink-0 w-full sm:w-auto border-t sm:border-0 border-slate-100 pt-3 sm:pt-0">
             {/* Status toggle */}
             <div className="flex items-center gap-1.5">
               <span className={`text-xs font-medium ${isActive ? 'text-emerald-400' : 'text-slate-500'}`}>

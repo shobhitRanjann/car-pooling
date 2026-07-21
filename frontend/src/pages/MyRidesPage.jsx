@@ -50,8 +50,8 @@ function ColleagueRequests({ offerId, availableSeats, onRefresh }) {
       <h4 className="text-sm font-semibold text-slate-700 mb-3">Colleague Requests</h4>
       <div className="space-y-3">
         {requests.map((req) => (
-          <div key={req.id} className="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-300">
-            <div>
+          <div key={req.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-300 gap-3 sm:gap-0">
+            <div className="w-full sm:w-auto">
               <p className="text-sm font-medium text-slate-800">
                 {req.passenger?.firstName} {req.passenger?.lastName}
               </p>
@@ -62,7 +62,7 @@ function ColleagueRequests({ offerId, availableSeats, onRefresh }) {
               </p>
             </div>
             
-            <div className="shrink-0 ml-4">
+            <div className="shrink-0 w-full sm:w-auto sm:ml-4 border-t sm:border-0 border-slate-200 pt-2 sm:pt-0">
               {req.status === 'PENDING' ? (
                 <div className="flex gap-2">
                   <button onClick={() => handleStatusChange(req.id, 'ACCEPTED')} disabled={availableSeats <= 0}
@@ -179,7 +179,7 @@ function OfferCard({ offer: initial, onRefresh }) {
   return (
     <div className="glass-card p-5 flex flex-col gap-4">
       {/* Header row */}
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-2 flex-wrap">
           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${STATUS_STYLE[offer.status] ?? ''}`}>
             {offer.status}
@@ -191,7 +191,7 @@ function OfferCard({ offer: initial, onRefresh }) {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="w-full sm:w-auto flex flex-wrap items-center gap-2 shrink-0 border-t sm:border-0 border-slate-100 pt-3 sm:pt-0">
           {/* Toggle */}
           {canToggle && (
             <div className="flex items-center gap-1.5">
