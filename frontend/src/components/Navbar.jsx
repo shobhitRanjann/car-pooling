@@ -40,9 +40,9 @@ export default function Navbar() {
             />
           ) : (
             <>
-              <span className="text-xl">🚗</span>
+              <span className="text-xl">🚗🏍️</span>
               <span className="font-bold text-base text-slate-900 group-hover:text-brand-600 transition-colors">
-                coworkride
+                pooling
               </span>
             </>
           )}
